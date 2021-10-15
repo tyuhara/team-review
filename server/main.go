@@ -18,10 +18,10 @@ func main() {
 	}
 
 	logger, err := log.New(conf)
-	//if err != nil {
-	//	_, _ = fmt.Fprintf(os.Stderr, "[ERROR] Failed to setup logger: %s\n", err)
-	//	return
-	//}
+	if err != nil {
+		_, _ = fmt.Fprintf(os.Stderr, "[ERROR] Failed to setup logger: %s\n", err)
+		return
+	}
 	defer func() {
 		_ = logger.Sync()
 	}()

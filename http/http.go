@@ -31,31 +31,6 @@ func Handler(conf *config.Config, logger *zap.SugaredLogger) {
 		// ToDo: Move GetInstallation GetID and client creation section
 
 		switch event := event.(type) {
-		//// Triger when the new issue open or labels
-		//case *github.IssuesEvent:
-		//	switch event.GetAction() {
-		//	case "labeled":
-		//		logger.Infof("Get issue event: %v", event.GetAction())
-		//		if err := gh.ProcessIssuesEvent(ctx, conf, event); err != nil {
-		//			logger.Error(err)
-		//			w.WriteHeader(http.StatusInternalServerError)
-		//			return
-		//		}
-		//	case "opend":
-		//		logger.Infof("Get issue event: %v", event.GetAction())
-		//		if err := gh.ProcessIssuesEvent(ctx, conf, event); err != nil {
-		//			logger.Error(err)
-		//			w.WriteHeader(http.StatusInternalServerError)
-		//			return
-		//		}
-		//	default:
-		//		logger.Infof("Get issue event: %v", event.GetAction())
-		//		if err := gh.ProcessIssuesEvent(ctx, conf, event); err != nil {
-		//			logger.Error(err)
-		//			w.WriteHeader(http.StatusInternalServerError)
-		//			return
-		//		}
-		//	}
 		// Trriger when the new comment add to the issue or pull request
 		case *github.IssueCommentEvent:
 			switch event.GetAction() {
@@ -69,21 +44,6 @@ func Handler(conf *config.Config, logger *zap.SugaredLogger) {
 			default:
 				logger.Infof("Get issue comment event: %v", event.GetAction())
 			}
-			//// Trriger when new pull request creates
-			//case *github.PullRequestEvent:
-			//	switch event.GetAction() {
-			//	case "opened":
-			//		logger.Infof("Get pull request event: %v", event.GetAction())
-			//		if err := gh.ProcessPullRequestsEvent(ctx, conf, event); err != nil {
-			//			logger.Error(err)
-			//			w.WriteHeader(http.StatusInternalServerError)
-			//			return
-			//		}
-			//	default:
-			//		logger.Infof("Get pull request event: %v", event.GetAction())
-			//	}
-			//default:
-			//	logger.Info("Get request")
 		}
 	})
 
